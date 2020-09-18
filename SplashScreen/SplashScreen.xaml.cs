@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace SplashScreen
+{
+    /// <summary>
+    /// Interaction logic for UserControl1.xaml
+    /// </summary>
+    public partial class SplashScreen : Window
+    {
+        public SplashScreen(int height, int width, Uri uri)
+        {
+            this.Width = width;
+            this.Height = height;                    
+            InitializeComponent();
+
+            if (File.Exists(uri.OriginalString))
+            {
+                BitmapImage image = new BitmapImage(uri);                
+                this.splashImage.Source = image;
+            }
+        }
+    }
+}
